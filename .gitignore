@@ -1,0 +1,30 @@
+# Sistema operativo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editores e IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Archivos temporales
+*.tmp
+*.bak
+*.log
+
+# Salidas locales de los agentes
+.claude/
+.cache/
+outputs/local/
+
+# Python (si alguien añade scripts auxiliares)
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Node (si alguien añade tooling)
+node_modules/
