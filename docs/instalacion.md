@@ -14,7 +14,7 @@ Claude Code soporta de forma nativa el formato SKILL.md.
 
 ```bash
 # Clonar el repositorio en tu carpeta personal de skills
-git clone https://github.com/<usuario>/auditoria-skills.git ~/.claude/skills/auditoria
+git clone https://github.com/marcelinero/auditoria-skills.git ~/.claude/skills/auditoria
 ```
 
 Reinicia Claude Code y ejecuta `/skills` para verificar que se han cargado.
@@ -24,13 +24,13 @@ Reinicia Claude Code y ejecuta `/skills` para verificar que se han cargado.
 ```bash
 # En la raíz de tu proyecto de auditoría
 mkdir -p .claude/skills
-git clone https://github.com/<usuario>/auditoria-skills.git .claude/skills/auditoria
+git clone https://github.com/marcelinero/auditoria-skills.git .claude/skills/auditoria
 ```
 
 ### Opción C — Submódulo git
 
 ```bash
-git submodule add https://github.com/<usuario>/auditoria-skills.git .claude/skills/auditoria
+git submodule add https://github.com/marcelinero/auditoria-skills.git .claude/skills/auditoria
 git submodule update --init
 ```
 

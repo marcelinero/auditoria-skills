@@ -24,7 +24,7 @@ Cada SKILL ancla sus procedimientos a normas reconocidas (IIA, COSO, NIA/ISA, CO
 
 ```bash
 # Clonar el repositorio
-git clone https://github.com/<usuario>/auditoria-skills.git
+git clone https://github.com/marcelinero/auditoria-skills.git
 
 # (Claude Code) — instalación personal
 cp -r auditoria-skills ~/.claude/skills/auditoria
