@@ -6,7 +6,41 @@ A continuación, el método de instalación recomendado para cada plataforma.
 
 ---
 
-## 1. Claude Code (CLI de Anthropic) — recomendado
+## 0. Servidor MCP — recomendado para Claude Desktop y Claude Code
+
+El método más simple: un servidor MCP que expone las 20 SKILLs como herramientas nativas, sin copiar archivos ni gestionar contexto manualmente.
+
+**Requisito:** tener [uv](https://docs.astral.sh/uv/getting-started/installation/) instalado.
+
+```bash
+# macOS / Linux
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
+# Windows (PowerShell)
+powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
+```
+
+Luego cloná el repo y agregá esta configuración a tu cliente:
+
+```json
+{
+  "mcpServers": {
+    "auditoria-skills": {
+      "command": "uv",
+      "args": ["run", "--script", "/ruta/al/repo/auditoria-skills/mcp/server.py"]
+    }
+  }
+}
+```
+
+- **Claude Desktop:** el archivo de configuración está en `~/Library/Application Support/Claude/claude_desktop_config.json` (macOS) o `%APPDATA%\Claude\claude_desktop_config.json` (Windows).
+- **Claude Code CLI:** ejecutá `claude mcp add auditoria-skills -- uv run --script /ruta/al/repo/auditoria-skills/mcp/server.py`
+
+Instrucciones completas → [`../mcp/README.md`](../mcp/README.md)
+
+---
+
+## 1. Claude Code (CLI de Anthropic) — instalación de archivos
 
 Claude Code soporta de forma nativa el formato SKILL.md.
 

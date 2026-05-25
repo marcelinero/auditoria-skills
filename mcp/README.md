@@ -7,7 +7,7 @@ Servidor [Model Context Protocol (MCP)](https://modelcontextprotocol.io) que exp
 ## Herramientas disponibles
 
 | Herramienta | Descripción |
-|---|---|
+| --- | --- |
 | `listar_skills` | Lista las 20 SKILLs con tipo, categoría/dominio y marcos normativos |
 | `obtener_skill` | Devuelve el contenido completo de una SKILL por su nombre exacto |
 | `buscar_skills` | Filtra el catálogo por tipo (`proceso`/`especialidad`) y/o marco normativo |
@@ -118,7 +118,7 @@ Configuración en `claude_desktop_config.json`:
 
 En Claude Desktop o Claude Code, enviá:
 
-```
+```text
 Listá las SKILLs de auditoría disponibles.
 ```
 
@@ -130,7 +130,7 @@ El agente debería llamar a `listar_skills` y devolver el catálogo completo.
 
 ### Cargar una SKILL específica
 
-```
+```text
 Cargá la SKILL auditoria-ciberseguridad y ayudame a planear
 una auditoría basada en NIST CSF 2.0.
 ```
@@ -139,7 +139,7 @@ El agente invocará `obtener_skill` con `nombre: "auditoria-ciberseguridad"` y l
 
 ### Buscar SKILLs por marco normativo
 
-```
+```text
 ¿Qué SKILLs del catálogo están ancladas a normas ISO?
 ```
 
@@ -147,7 +147,7 @@ El agente invocará `buscar_skills` con `marco: "ISO"`.
 
 ### Flujo completo de una auditoría
 
-```
+```text
 Voy a hacer una auditoría de cumplimiento de ISO 37301 en una empresa
 del sector financiero. Cargá las SKILLs relevantes y ayudame a
 construir el plan de engagement.
@@ -159,7 +159,7 @@ El agente buscará y cargará `auditoria-cumplimiento` + `planeacion-basada-ries
 
 ## Estructura del servidor
 
-```
+```text
 mcp/
 ├── server.py   ← servidor MCP (archivo único con dependencias inline)
 └── README.md   ← esta guía
@@ -172,7 +172,7 @@ El servidor lee los archivos `SKILL.md` directamente desde el repositorio, por l
 ## Compatibilidad
 
 | Cliente | Soporte |
-|---|---|
+| --- | --- |
 | Claude Desktop (macOS / Windows) | ✅ |
 | Claude Code (CLI) | ✅ |
 | Agentes via Claude API + MCP SDK | ✅ |

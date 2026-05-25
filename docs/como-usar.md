@@ -2,18 +2,31 @@
 
 Esta guía explica el modelo mental detrás del catálogo y cómo orquestar varias SKILLs en un mismo trabajo de auditoría.
 
+## Antes de empezar: elegí tu método de integración
+
+| Método | Cuándo usarlo |
+| --- | --- |
+| **Servidor MCP** (recomendado) | Claude Desktop o Claude Code — el agente carga las SKILLs automáticamente cuando las necesita |
+| **Instalación de archivos** | Claude Code con skills locales, uso sin MCP |
+| **Copiar y pegar** | Cualquier plataforma sin soporte de archivos |
+
+Para configurar el servidor MCP → [`../mcp/README.md`](../mcp/README.md)
+Para otros métodos → [`instalacion.md`](instalacion.md)
+
+---
+
 ## El modelo: dos dimensiones complementarias
 
 Las SKILLs están organizadas en dos dimensiones que se combinan:
 
 | Dimensión | ¿Qué responde? | Cuándo se usan |
-|---|---|---|
+| --- | --- | --- |
 | **Especialidad** | *"¿Qué estoy auditando?"* | Una o dos por engagement |
 | **Proceso** | *"¿En qué etapa estoy?"* | Varias en secuencia o en paralelo |
 
 Una auditoría real **siempre** combina al menos una SKILL de especialidad con varias SKILLs de proceso.
 
-```
+```text
             ┌──────────────────────────────────────────┐
             │      ESPECIALIDAD (¿qué auditás?)        │
             │  financiera · TI · forense · ESG · etc.  │
@@ -30,7 +43,7 @@ Una auditoría real **siempre** combina al menos una SKILL de especialidad con v
 
 ## Flujo estándar de una auditoría
 
-```
+```text
 1. Activar la SKILL de ESPECIALIDAD que corresponda al objeto auditado
    (ej. auditoria-ciberseguridad)
                           ↓
@@ -62,6 +75,7 @@ Una auditoría real **siempre** combina al menos una SKILL de especialidad con v
 ### Patrón A — Engagement individual
 
 Una sola auditoría de inicio a fin. Mantén activas:
+
 - **1 especialidad** (la del objeto auditado).
 - **5–6 procesos** (planeación, controles, muestreo, papeles, hallazgos, seguimiento).
 
@@ -72,6 +86,7 @@ Ejemplo: auditoría de cierre contable trimestral.
 Dos dominios que se cruzan (ej. ciberseguridad + cumplimiento regulatorio).
 
 Activa:
+
 - **2 especialidades** (`auditoria-ciberseguridad` + `auditoria-cumplimiento`).
 - **4–5 procesos**, asegurándote de combinar evidencia de ambas especialidades en `papeles-trabajo` y `comunicacion-hallazgos`.
 
@@ -92,6 +107,7 @@ Cargar las 20 SKILLs simultáneamente diluye la atención del modelo y puede sat
 ### 2. Activar SKILLs por fase, no de una sola vez
 
 Si tu plataforma lo permite (Claude Code, Custom GPTs con varias instancias), activá las SKILLs según avances:
+
 - Empezá con `planeacion-basada-riesgos` + especialidad.
 - Cuando entres a ejecución, cargá `evaluacion-controles`, `muestreo`, `analitica-datos`.
 - Para el cierre, sumá `comunicacion-hallazgos`.
@@ -111,13 +127,13 @@ Una sola fuente raramente es suficiente. Pedile al agente que combine entrevista
 
 ### 6. Verificar versiones de normas
 
-Cuando el agente cite una norma (ISO, NIST, NIA, IFRS), confirma que estás trabajando con la versión vigente. Las SKILLs anclan versiones, pero los estándares evolucionan.
+Cuando el agente cite una norma (ISO, NIST, NIA, IFRS), confirmá que estás trabajando con la versión vigente. Las SKILLs anclan versiones, pero los estándares evolucionan.
 
 ---
 
 ## Ejemplo de prompt para arrancar una auditoría
 
-```
+```text
 Acabo de iniciar una auditoría de ciberseguridad para una empresa
 del sector financiero, regulada en Colombia. Tienen ~800 empleados,
 infraestructura híbrida (on-prem + AWS) y un SOC tercerizado.

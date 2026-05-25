@@ -3,7 +3,7 @@
 > Catálogo abierto de **SKILLs** (instrucciones modulares para agentes de IA) basadas en buenas prácticas, normas y estándares globalmente aceptados para la función de auditoría — interna, externa, financiera, de TI, forense, ESG y más.
 
 [![License: CC BY-SA 4.0](https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg)](LICENSE)
-[![Versión](https://img.shields.io/badge/versi%C3%B3n-1.0.0-blue.svg)](CHANGELOG.md)
+[![Versión](https://img.shields.io/badge/versi%C3%B3n-1.1.0-blue.svg)](CHANGELOG.md)
 [![SKILLs](https://img.shields.io/badge/SKILLs-20-brightgreen.svg)](catalog.json)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-orange.svg)](CONTRIBUTING.md)
 
@@ -112,7 +112,7 @@ Instrucciones completas de instalación y configuración → [`mcp/README.md`](m
 
 Un trabajo de auditoría real **siempre** combina al menos una SKILL de especialidad con varias SKILLs de proceso:
 
-```
+```text
    ESPECIALIDAD (¿qué auditás?)
             │
             ▼
@@ -137,15 +137,20 @@ Un trabajo de auditoría real **siempre** combina al menos una SKILL de especial
 
 ## Estructura del repositorio
 
-```
+```text
 auditoria-skills/
 ├── README.md                        ← este archivo
+├── SECURITY.md                      ← política de seguridad
 ├── LICENSE                          ← CC BY-SA 4.0
 ├── CONTRIBUTING.md                  ← cómo aportar al catálogo
 ├── CODE_OF_CONDUCT.md
 ├── CHANGELOG.md
 ├── catalog.json                     ← índice machine-readable
 ├── .gitignore
+│
+├── mcp/                             ← servidor MCP (Claude Desktop / Claude Code)
+│   ├── server.py                    ← servidor MCP de archivo único
+│   └── README.md                    ← guía de configuración del MCP
 │
 ├── skills/
 │   ├── procesos/                    ← 8 SKILLs transversales
@@ -172,7 +177,7 @@ auditoria-skills/
 │       └── tecnologia-informacion/
 │
 ├── docs/
-│   ├── instalacion.md               ← Claude Code, Projects, SDK, ChatGPT, Gemini
+│   ├── instalacion.md               ← MCP, Claude Code, Projects, SDK, ChatGPT, Gemini
 │   ├── como-usar.md                 ← orquestación y buenas prácticas
 │   ├── casos-de-uso.md              ← combinaciones por tipo de auditoría
 │   ├── glosario.md                  ← siglas y términos
@@ -184,6 +189,8 @@ auditoria-skills/
 │   └── auditoria-esg-issb/
 │
 └── .github/
+    ├── workflows/
+    │   └── validate.yml             ← CI: valida catalog.json y SKILLs en cada PR
     ├── ISSUE_TEMPLATE/
     │   ├── nueva-skill.md
     │   └── mejora-skill.md
@@ -191,6 +198,7 @@ auditoria-skills/
 ```
 
 Cada carpeta de SKILL contiene:
+
 - `SKILL.md` — frontmatter YAML + cuerpo de instrucciones (lo que carga el agente).
 - `README.md` — ficha legible al navegar GitHub.
 
@@ -238,8 +246,9 @@ El catálogo se construye sobre estos cuerpos normativos (versiones vigentes a l
 ¡Las contribuciones son bienvenidas! Antes de empezar leé [`CONTRIBUTING.md`](CONTRIBUTING.md).
 
 **Caminos típicos de contribución:**
-- Reportar una norma desactualizada → [issue de mejora](.github/ISSUE_TEMPLATE/mejora-skill.md).
-- Proponer una nueva SKILL → [issue de nueva SKILL](.github/ISSUE_TEMPLATE/nueva-skill.md).
+
+- Reportar una norma desactualizada → [abrir issue de mejora](https://github.com/marcelinero/auditoria-skills/issues/new?template=mejora-skill.md).
+- Proponer una nueva SKILL → [abrir issue de nueva SKILL](https://github.com/marcelinero/auditoria-skills/issues/new?template=nueva-skill.md).
 - Aportar un caso de uso real (anonimizado) en `examples/`.
 - Mejorar la documentación.
 
@@ -261,5 +270,5 @@ Este catálogo se nutre del cuerpo de conocimiento construido durante décadas p
 
 ## Contacto
 
-- **Issues / propuestas:** abrí un issue en este repositorio.
-- **Discusiones generales:** pestaña *Discussions* de GitHub.
+- **Issues / propuestas:** abrí un [issue](https://github.com/marcelinero/auditoria-skills/issues) en este repositorio.
+- **Seguridad:** usá *Report a vulnerability* en la pestaña *Security* del repo.
