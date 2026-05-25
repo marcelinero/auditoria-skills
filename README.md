@@ -3,10 +3,11 @@
 > Catálogo abierto de **SKILLs** (instrucciones modulares para agentes de IA) basadas en buenas prácticas, normas y estándares globalmente aceptados para la función de auditoría — interna, externa, financiera, de TI, forense, ESG y más.
 
 [![License: CC BY-SA 4.0](https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg)](LICENSE)
-[![Versión](https://img.shields.io/badge/versi%C3%B3n-1.1.0-blue.svg)](CHANGELOG.md)
+[![Versión](https://img.shields.io/badge/versi%C3%B3n-2.0.0-blue.svg)](CHANGELOG.md)
 [![SKILLs](https://img.shields.io/badge/SKILLs-20-brightgreen.svg)](catalog.json)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-orange.svg)](CONTRIBUTING.md)
 [![PyPI](https://img.shields.io/pypi/v/auditoria-skills-mcp.svg?label=PyPI)](https://pypi.org/project/auditoria-skills-mcp/)
+[![MCP Registry](https://img.shields.io/badge/MCP%20Registry-publicado-purple.svg)](https://registry.modelcontextprotocol.io/servers/io.github.marcelinero-auditoria-skills)
 
 ---
 
