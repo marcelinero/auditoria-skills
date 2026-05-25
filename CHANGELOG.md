@@ -6,6 +6,17 @@ El formato sigue [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/) y e
 
 ## [No publicado]
 
+## [1.1.0] — 2026-05-24
+
+### Agregado
+
+- Servidor MCP (`mcp/server.py`) que expone las 20 SKILLs como herramientas nativas para clientes compatibles con Model Context Protocol (Claude Desktop, Claude Code, agentes via SDK).
+  - Herramienta `listar_skills`: devuelve el catálogo completo con tipos, categorías y marcos normativos.
+  - Herramienta `obtener_skill`: carga el contenido completo de una SKILL por nombre.
+  - Herramienta `buscar_skills`: filtra por tipo (`proceso`/`especialidad`) y/o marco normativo.
+- Documentación del servidor MCP (`mcp/README.md`) con instrucciones de configuración para Claude Desktop (Windows, macOS, Linux), Claude Code CLI y Python directo.
+- Sección "Servidor MCP" en el `README.md` principal con quickstart y tabla de herramientas.
+
 ## [1.0.0] — 2026-05-01
 
 ### Agregado

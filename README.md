@@ -37,12 +37,47 @@ Para instrucciones por plataforma, ver [`docs/instalacion.md`](docs/instalacion.
 
 ---
 
+## Servidor MCP (recomendado para Claude Desktop y Claude Code)
+
+Este repositorio incluye un **servidor MCP** listo para usar que expone las 20 SKILLs como herramientas nativas en cualquier cliente compatible.
+
+### Configuración rápida (requiere [uv](https://docs.astral.sh/uv/))
+
+Agregá esto a tu `claude_desktop_config.json`:
+
+```json
+{
+  "mcpServers": {
+    "auditoria-skills": {
+      "command": "uv",
+      "args": [
+        "run",
+        "--script",
+        "/ruta/al/repo/auditoria-skills/mcp/server.py"
+      ]
+    }
+  }
+}
+```
+
+**Herramientas que expone el MCP:**
+
+| Herramienta | Qué hace |
+| --- | --- |
+| `listar_skills` | Muestra el catálogo completo con tipos y marcos normativos |
+| `obtener_skill` | Carga el contenido completo de una SKILL por nombre |
+| `buscar_skills` | Filtra por tipo (`proceso`/`especialidad`) y/o marco (ISO, NIST, IIA…) |
+
+Instrucciones completas de instalación y configuración → [`mcp/README.md`](mcp/README.md)
+
+---
+
 ## Catálogo
 
 ### SKILLs de proceso (transversales)
 
 | SKILL | Propósito | Estándares ancla |
-|---|---|---|
+| --- | --- | --- |
 | [`planeacion-basada-riesgos`](skills/procesos/planeacion-basada-riesgos/) | Construir el universo auditable, evaluar riesgos y elaborar planes anuales y de engagement | IIA, COSO ERM, ISO 31000 |
 | [`evaluacion-controles`](skills/procesos/evaluacion-controles/) | Identificar, documentar y probar diseño y operación de controles internos | COSO IC-IF, IIA, SOX 404 |
 | [`muestreo`](skills/procesos/muestreo/) | Diseñar muestreo estadístico y no estadístico para pruebas de auditoría | NIA/ISA 530, AICPA |
@@ -55,7 +90,7 @@ Para instrucciones por plataforma, ver [`docs/instalacion.md`](docs/instalacion.
 ### SKILLs de especialidad
 
 | SKILL | Dominio | Estándares ancla |
-|---|---|---|
+| --- | --- | --- |
 | [`auditoria-financiera`](skills/especialidades/financiera/) | Estados financieros y aseveraciones contables | NIA/ISA, NIIF/IFRS, SOX, COSO IC-IF |
 | [`auditoria-operativa`](skills/especialidades/operativa/) | Eficiencia, eficacia y economía de procesos | IIA, ISO 9001, INTOSAI |
 | [`auditoria-tecnologia-informacion`](skills/especialidades/tecnologia-informacion/) | Gobierno y controles generales de TI (ITGCs) | COBIT 2019, ITAF, GTAGs, ISO 27001 |
