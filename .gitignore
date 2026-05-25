@@ -20,11 +20,17 @@ desktop.ini
 .cache/
 outputs/local/
 
-# Python (si alguien añade scripts auxiliares)
+# Python
 __pycache__/
 *.pyc
 .venv/
 venv/
+mcp/.venv/
 
-# Node (si alguien añade tooling)
+# uv
+.uv/
+uv.lock
+
+# Node / build
 node_modules/
+dist/

@@ -20,11 +20,16 @@ from mcp.server.stdio import stdio_server
 import mcp.types as types
 
 # ── Paths ──────────────────────────────────────────────────────────────────────
-REPO_ROOT = Path(__file__).parent.parent
+REPO_ROOT = Path(__file__).parent.parent.resolve()
 CATALOG_PATH = REPO_ROOT / "catalog.json"
 
-with open(CATALOG_PATH, encoding="utf-8") as _f:
-    CATALOG: dict = json.load(_f)
+try:
+    with open(CATALOG_PATH, encoding="utf-8") as _f:
+        CATALOG: dict = json.load(_f)
+except FileNotFoundError:
+    raise SystemExit(f"catalog.json no encontrado en {REPO_ROOT}") from None
+except json.JSONDecodeError as e:
+    raise SystemExit(f"catalog.json tiene formato inválido: {e}") from None
 
 SKILLS: list[dict] = CATALOG["skills"]
 
@@ -98,8 +103,9 @@ async def handle_list_tools() -> list[types.Tool]:
 
 @server.call_tool()
 async def handle_call_tool(
-    name: str, arguments: dict
+    name: str, arguments: dict | None
 ) -> list[types.TextContent]:
+    arguments = arguments or {}
 
     # ── listar_skills ──────────────────────────────────────────────────────────
     if name == "listar_skills":
@@ -150,7 +156,14 @@ async def handle_call_tool(
                 )
             ]
 
-        skill_path = REPO_ROOT / skill["path"]
+        skill_path = (REPO_ROOT / skill["path"]).resolve()
+        if not skill_path.is_relative_to(REPO_ROOT):
+            return [
+                types.TextContent(
+                    type="text",
+                    text=f"Ruta de SKILL fuera del repositorio — entrada rechazada.",
+                )
+            ]
         if not skill_path.exists():
             return [
                 types.TextContent(
