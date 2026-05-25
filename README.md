@@ -6,6 +6,7 @@
 [![Versión](https://img.shields.io/badge/versi%C3%B3n-1.1.0-blue.svg)](CHANGELOG.md)
 [![SKILLs](https://img.shields.io/badge/SKILLs-20-brightgreen.svg)](catalog.json)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-orange.svg)](CONTRIBUTING.md)
+[![PyPI](https://img.shields.io/pypi/v/auditoria-skills-mcp.svg?label=PyPI)](https://pypi.org/project/auditoria-skills-mcp/)
 
 ---
 
@@ -37,38 +38,48 @@ Para instrucciones por plataforma, ver [`docs/instalacion.md`](docs/instalacion.
 
 ---
 
-## Servidor MCP (recomendado para Claude Desktop y Claude Code)
+## Servidor MCP
 
-Este repositorio incluye un **servidor MCP** listo para usar que expone las 20 SKILLs como herramientas nativas en cualquier cliente compatible.
+Las 20 SKILLs están disponibles como servidor MCP en dos modalidades:
 
-### Configuración rápida (requiere [uv](https://docs.astral.sh/uv/))
+### Opción A — Paquete PyPI (recomendado, sin clonar el repo)
 
-Agregá esto a tu `claude_desktop_config.json`:
+```json
+{
+  "mcpServers": {
+    "auditoria-skills": {
+      "command": "uvx",
+      "args": ["auditoria-skills-mcp"]
+    }
+  }
+}
+```
+
+Instalación cero — `uvx` descarga y ejecuta el paquete automáticamente.
+Repositorio del paquete → [github.com/marcelinero/auditoria-skills-mcp](https://github.com/marcelinero/auditoria-skills-mcp)
+
+### Opción B — Script local (requiere clonar el repo)
 
 ```json
 {
   "mcpServers": {
     "auditoria-skills": {
       "command": "uv",
-      "args": [
-        "run",
-        "--script",
-        "/ruta/al/repo/auditoria-skills/mcp/server.py"
-      ]
+      "args": ["run", "--script", "/ruta/al/repo/auditoria-skills/mcp/server.py"]
     }
   }
 }
 ```
 
-**Herramientas que expone el MCP:**
+Instrucciones completas → [`mcp/README.md`](mcp/README.md)
+
+**Herramientas disponibles en ambas opciones:**
 
 | Herramienta | Qué hace |
 | --- | --- |
 | `listar_skills` | Muestra el catálogo completo con tipos y marcos normativos |
 | `obtener_skill` | Carga el contenido completo de una SKILL por nombre |
 | `buscar_skills` | Filtra por tipo (`proceso`/`especialidad`) y/o marco (ISO, NIST, IIA…) |
-
-Instrucciones completas de instalación y configuración → [`mcp/README.md`](mcp/README.md)
 
 ---
 

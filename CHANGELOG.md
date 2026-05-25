@@ -6,6 +6,16 @@ El formato sigue [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/) y e
 
 ## [No publicado]
 
+## [2.0.0] — 2026-05-25
+
+### Agregado
+
+- Paquete PyPI `auditoria-skills-mcp` ([github.com/marcelinero/auditoria-skills-mcp](https://github.com/marcelinero/auditoria-skills-mcp)) — servidor MCP instalable con `uvx auditoria-skills-mcp`, sin necesidad de clonar el repositorio.
+- `server.json` para publicación en el registro oficial MCP (`registry.modelcontextprotocol.io`).
+- GitHub Actions de CI/CD en el repo del paquete: validación de consistencia de versiones y publicación automatizada en PyPI + MCP Registry al crear un tag `v*`.
+- Badge de PyPI en el README principal.
+- README principal actualizado con las dos modalidades de uso del MCP (PyPI y script local).
+
 ## [1.1.0] — 2026-05-24
 
 ### Agregado
