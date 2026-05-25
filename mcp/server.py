@@ -161,7 +161,7 @@ async def handle_call_tool(
             return [
                 types.TextContent(
                     type="text",
-                    text=f"Ruta de SKILL fuera del repositorio — entrada rechazada.",
+                    text="Ruta de SKILL fuera del repositorio — entrada rechazada.",
                 )
             ]
         if not skill_path.exists():
